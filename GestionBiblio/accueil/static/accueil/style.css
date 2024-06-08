@@ -1,0 +1,39 @@
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #333;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #111;
+}
+.centred {
+    position: fixed;
+    background: url("static/images/nn.png") no-repeat center center fixed;
+    top: 50%;
+    left: 50%;
+/* bring your own prefixes */
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+ body {
+            margin: 0; /* Supprime les marges par défaut */
+            font-family: Arial, sans-serif; /* Police de caractères par défaut */
+            background-image: url('images/nn.png'); /* Image de fond */
+            background-size: cover; /* Couvrir toute la zone visible */
+            background-position: center; /* Centrer l'image de fond */
+            background-repeat: no-repeat; /* Ne pas répéter l'image */
+        }

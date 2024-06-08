@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% block main_content %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrement des abonnes</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px;
+        }
+        .form-container {
+            width: 45%;
+        }
+        .table-container {
+            width: 45%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <div class="form-container"style="background:#BDB76B">
+            <h2>Enregistrer un abonne</h2>
+            <form class="d-flex" action="{% url 'interface2:save_abonne' %}" method="POST">
+                {% csrf_token %}
+                <label for="identifiant">Identifiant :</label><br>
+                <input type="text" id="identifiant" name="identifiant"><br><br>
+                <label for="nom_et_prenom">Nom_et_Prenom:</label><br>
+                <input type="text" id="nom_et_prenom" name="nom_et_prenom"><br><br>
+                <button type="submit" formaction="{% url 'interface2:save_abonne' %}" formmethod="post" >Save</button>
+                <button type="submit" formaction="{% url 'interface2:supprimer_abonne' %}" formmethod="post">Supprimer</button>
+                <button type="submit" formaction="{% url 'interface2:modifier_abonne' %}" formmethod="post">modification</button>
+                <a href="{% url 'livre:index' %}"><button type="button">Livre</button></a>
+                <button type="button" onclick="window.location.reload();">Actualiser</button>
+
+
+            </form>
+        </div>
+        <div class="table-container">
+            <h2>Liste des Abonnes</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Nom_et_Prenom</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Insérer des lignes de données ici -->
+                    {% for Abonnes in abonnes %}
+                        <tr>
+                            <td>{{Abonnes.identifiant}}</td>
+                            <td>{{Abonnes.nom_et_prenom}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+
+
+    </div>
+</body>
+</html>
+{% endblock %}

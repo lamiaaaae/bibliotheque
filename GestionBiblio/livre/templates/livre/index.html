@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+{% block main_content %}
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enregistrement des Livres</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin: 20px;
+        }
+        .form-container {
+            width: 45%;
+        }
+        .table-container {
+            width: 45%;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" >
+        <div class="form-container"style="background:#BDB76B">
+            <h2>Enregistrer un Livre</h2>
+            <form class="d-flex" action="{% url 'livre:save_livres' %}" method="POST">
+                {% csrf_token %}
+                <label for="identifiant">Identifiant :</label><br>
+                <input type="text" id="identifiant" name="identifiant"><br><br>
+                <label for="titre">Titre :</label><br>
+                <input type="text" id="titre" name="titre"><br><br>
+                <button type="submit">Save</button>
+                <button type="submit" formaction="{% url 'livre:supprimer_livre' %}" formmethod="post">Supprimer</button>
+                <button type="submit" formaction="{% url 'livre:modifier_livre' %}" formmethod="post">modification</button>
+                <a href="{% url 'interface2:index' %}"><button type="button">Abonné</button></a>
+                <button type="button" onclick="window.location.reload();">Actualiser</button>
+
+
+            </form>
+        </div>
+        <div class="table-container">
+            <h2>Liste des Livres</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Identifiant</th>
+                        <th>Titre</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Insérer des lignes de données ici -->
+                    {%for Livres in livres %}
+                        <tr>
+                            <td>{{ Livres.identifiant }}</td>
+                            <td>{{ Livres.titre }}</td>
+                        </tr>
+                    {% endfor%}
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</body>
+</html>
+{% endblock %}

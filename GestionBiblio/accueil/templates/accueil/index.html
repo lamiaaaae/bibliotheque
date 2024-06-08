@@ -1,0 +1,26 @@
+
+{% load static %}
+<!DOCTYPE html>
+{% block main_content %}
+<html>
+<head>
+  <link rel="stylesheet" href="{% static 'accueil/style.css' %}">
+</head>
+<body>
+    <ul>
+        <li><a class="active" href="#home">Home</a></li>
+        <li><a href="{% url 'livre:index' %}">Enregistrer un livre</a></li>
+        <li><a href="{% url 'interface2:index' %}">Enregistrer un abonné</a></li>
+
+    </ul>
+    <div class="centred">
+       <h1 class="italic-large">vous êtes les bienvenus</h1>
+        <h2 class="italic-large">BOOK STORE est votre place pour lire</h2>
+
+    </div>
+
+</body>
+</html>
+{% endblock %}
+
+
